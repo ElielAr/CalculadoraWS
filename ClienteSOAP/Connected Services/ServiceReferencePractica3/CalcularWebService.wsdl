@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Bienvenida">
+        <s:complexType />
+      </s:element>
+      <s:element name="BienvenidaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BienvenidaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AreaCuadrado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="valor1" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="valor2" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AreaCuadradoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AreaCuadradoResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AreaTriangulo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Base" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Altura" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AreaTrianguloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AreaTrianguloResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AreaCirculo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="radio" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AreaCirculoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AreaCirculoResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="BienvenidaSoapIn">
+    <wsdl:part name="parameters" element="tns:Bienvenida" />
+  </wsdl:message>
+  <wsdl:message name="BienvenidaSoapOut">
+    <wsdl:part name="parameters" element="tns:BienvenidaResponse" />
+  </wsdl:message>
+  <wsdl:message name="AreaCuadradoSoapIn">
+    <wsdl:part name="parameters" element="tns:AreaCuadrado" />
+  </wsdl:message>
+  <wsdl:message name="AreaCuadradoSoapOut">
+    <wsdl:part name="parameters" element="tns:AreaCuadradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AreaTrianguloSoapIn">
+    <wsdl:part name="parameters" element="tns:AreaTriangulo" />
+  </wsdl:message>
+  <wsdl:message name="AreaTrianguloSoapOut">
+    <wsdl:part name="parameters" element="tns:AreaTrianguloResponse" />
+  </wsdl:message>
+  <wsdl:message name="AreaCirculoSoapIn">
+    <wsdl:part name="parameters" element="tns:AreaCirculo" />
+  </wsdl:message>
+  <wsdl:message name="AreaCirculoSoapOut">
+    <wsdl:part name="parameters" element="tns:AreaCirculoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CalcularWebServiceSoap">
+    <wsdl:operation name="Bienvenida">
+      <wsdl:input message="tns:BienvenidaSoapIn" />
+      <wsdl:output message="tns:BienvenidaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AreaCuadrado">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Este servicio web calcula el area de un cuadrado</wsdl:documentation>
+      <wsdl:input message="tns:AreaCuadradoSoapIn" />
+      <wsdl:output message="tns:AreaCuadradoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AreaTriangulo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Este servicio web calcula el area de un triangulo</wsdl:documentation>
+      <wsdl:input message="tns:AreaTrianguloSoapIn" />
+      <wsdl:output message="tns:AreaTrianguloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AreaCirculo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Este servicio web calcula el area de un circulo</wsdl:documentation>
+      <wsdl:input message="tns:AreaCirculoSoapIn" />
+      <wsdl:output message="tns:AreaCirculoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CalcularWebServiceSoap" type="tns:CalcularWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Bienvenida">
+      <soap:operation soapAction="http://tempuri.org/Bienvenida" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AreaCuadrado">
+      <soap:operation soapAction="http://tempuri.org/AreaCuadrado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AreaTriangulo">
+      <soap:operation soapAction="http://tempuri.org/AreaTriangulo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AreaCirculo">
+      <soap:operation soapAction="http://tempuri.org/AreaCirculo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CalcularWebServiceSoap12" type="tns:CalcularWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Bienvenida">
+      <soap12:operation soapAction="http://tempuri.org/Bienvenida" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AreaCuadrado">
+      <soap12:operation soapAction="http://tempuri.org/AreaCuadrado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AreaTriangulo">
+      <soap12:operation soapAction="http://tempuri.org/AreaTriangulo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AreaCirculo">
+      <soap12:operation soapAction="http://tempuri.org/AreaCirculo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CalcularWebService">
+    <wsdl:port name="CalcularWebServiceSoap" binding="tns:CalcularWebServiceSoap">
+      <soap:address location="http://localhost:53630/CalcularWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CalcularWebServiceSoap12" binding="tns:CalcularWebServiceSoap12">
+      <soap12:address location="http://localhost:53630/CalcularWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
